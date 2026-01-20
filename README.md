@@ -2,9 +2,7 @@
 
 > **Financial Data Analysis Made Simple** — A production-grade Python toolkit for loading, cleaning, validating, and analyzing financial data with one-line pipelines.
 
-[![PyPI Version](https://img.shields.io/pypi/v/fda-toolkit.svg)](https://pypi.org/project/fda-toolkit/)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/fda-toolkit.svg)](https://pypi.org/project/fda-toolkit/)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
