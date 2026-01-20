@@ -6,21 +6,38 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-## ✨ Why FDA Toolkit?
+## Why FDA Toolkit?
 
 Financial data analysis is messy. You spend **80% of your time** cleaning, validating, and transforming data instead of analyzing it. FDA Toolkit eliminates that pain by providing:
 
-- ✅ **67 production-ready functions** grouped into 8 intelligent modules
-- ✅ **One-line pipelines** for common workflows (e.g., `ftk.quick_clean_finance()`)
-- ✅ **Finance-aware validation** — understand sign conventions, entity names, currency formats
-- ✅ **Audit trail** — every operation logged for compliance and debugging
-- ✅ **Type-safe** — full type hints and IDE autocomplete throughout
-- ✅ **Memory efficient** — optimize dtypes, handle large files with chunking
-- ✅ **Professional API** — pandas-like, intuitive, well-documented
+- **67 production-ready functions** grouped into 8 intelligent modules
+- **One-line pipelines** for common workflows (e.g., `ftk.quick_clean_finance()`)
+- **Finance-aware validation** — understand sign conventions, entity names, currency formats
+- **Audit trail** — every operation logged for compliance and debugging
+- **Type-safe** — full type hints and IDE autocomplete throughout
+- **Memory efficient** — optimize dtypes, handle large files with chunking
+- **Professional API** — pandas-like, intuitive, well-documented
 
----
 
-## 🚀 Quick Start
+
+## Module Overview
+
+| Module | Functions | Purpose |
+|--------|-----------|---------|
+| **core** | 17 | Column cleaning, types, duplicates, missing, outliers, text |
+| **features** | 7 | Date & categorical feature engineering |
+| **finance** | 11 | Currency parsing, entity standardization, financial validation |
+| **validation** | 9 | Schema, ranges, integrity, reconciliation |
+| **reporting** | 10 | Profiling, snapshots, delta reports, quick checks |
+| **io** | 5 | Safe CSV/Excel reading, chunked processing, parquet export |
+| **pipelines** | 2 | Pre-built `quick_clean()` and `quick_clean_finance()` |
+| **utils** | 6 | Logging, security, memory optimization |
+| **TOTAL** | **67** | Production-ready functions |
+
+
+
+
+## Quick Start
 
 ### Install
 
@@ -146,9 +163,9 @@ for chunk in ftk.chunked_processing("huge_file.csv", chunksize=50_000):
 ftk.export_parquet(df, "output.parquet")  # Fast, compressed
 ```
 
----
 
-## 🏗️ Architecture: Dynamic & Scalable
+
+## Architecture: Dynamic & Scalable
 
 Every function **self-registers** via decorator — no manual `__all__` lists:
 
@@ -171,7 +188,7 @@ def detect_fraud(df: pd.DataFrame) -> pd.DataFrame:
 
 ---
 
-## 🔍 Audit Trail (Compliance Ready)
+## Audit Trail (Compliance Ready)
 
 Every operation is logged automatically:
 
@@ -227,23 +244,10 @@ print("✅ Pipeline complete with full audit trail!")
 
 ---
 
-## 📦 Module Overview
-
-| Module | Functions | Purpose |
-|--------|-----------|---------|
-| **core** | 17 | Column cleaning, types, duplicates, missing, outliers, text |
-| **features** | 7 | Date & categorical feature engineering |
-| **finance** | 11 | Currency parsing, entity standardization, financial validation |
-| **validation** | 9 | Schema, ranges, integrity, reconciliation |
-| **reporting** | 10 | Profiling, snapshots, delta reports, quick checks |
-| **io** | 5 | Safe CSV/Excel reading, chunked processing, parquet export |
-| **pipelines** | 2 | Pre-built `quick_clean()` and `quick_clean_finance()` |
-| **utils** | 6 | Logging, security, memory optimization |
-| **TOTAL** | **67** | Production-ready functions |
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -269,7 +273,7 @@ def test_clean_headers():
 
 ---
 
-## ⚙️ Installation & Development
+## Installation & Development
 
 ### From Source
 
@@ -292,7 +296,7 @@ pip install -e ".[dev]"
 
 ---
 
-## 🔐 Security & Compliance
+## Security & Compliance
 
 - **Audit logging** — Every operation tracked with timestamps
 - **Data masking** — `mask_sensitive_fields()` for PII protection
