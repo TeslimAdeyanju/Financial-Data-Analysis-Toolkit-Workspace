@@ -2,6 +2,7 @@
 
 > **Financial Data Analysis Made Simple** — A production-grade Python toolkit for loading, cleaning, validating, and analyzing financial data with one-line pipelines.
 
+[![PyPI version](https://img.shields.io/badge/PyPI-0.2.5-blue)](https://pypi.org/project/fda-toolkit/)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -42,7 +43,19 @@ Financial data analysis is messy. You spend **80% of your time** cleaning, valid
 ### Install
 
 ```bash
-pip install -e .
+pip install fda-toolkit
+```
+
+Or upgrade to latest:
+```bash
+pip install --upgrade fda-toolkit
+```
+
+### Check Version
+
+```python
+import fda_toolkit as ftk
+print(ftk.__version__)  # 0.2.5
 ```
 
 ### Use in 3 Lines
@@ -59,12 +72,20 @@ ftk.quick_check(df_clean)  # Profile results
 ### Discover All Functions
 
 ```python
-# See what's available
-ftk.info()  # Browse by category
+# See what's available (67 functions with tooltips)
+ftk.info()
 
-# Filter by domain
-ftk.info(category="Finance")
+# Filter by category
+ftk.info(category='Finance')
+
+# Filter by module
+ftk.info(module='finance.parsing')
+
+# Combine filters
+ftk.info(category='Finance', module='finance.parsing')
 ```
+
+**Hover over function names** to see descriptions (in Jupyter notebooks).
 
 ---
 
