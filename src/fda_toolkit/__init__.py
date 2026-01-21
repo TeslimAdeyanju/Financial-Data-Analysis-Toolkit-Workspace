@@ -1,6 +1,6 @@
 """Top level imports for common FDA workflows."""
 
-__version__ = "0.2.6"
+__version__ = "0.2.7"
 
 # Core functions
 from fda_toolkit.core.columns import clean_column_headers, make_unique_columns
