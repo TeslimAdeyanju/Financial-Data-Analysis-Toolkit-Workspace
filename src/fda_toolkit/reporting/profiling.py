@@ -284,35 +284,49 @@ def quick_check(df: pd.DataFrame) -> None:
     category="Reporting",
     module="reporting.profiling",
 )
-def info(category: Optional[str] = None) -> pd.DataFrame:
+def info(category: Optional[str] = None, module: Optional[str] = None):
     """
-    Return a function reference table.
+    Return a function reference table with tooltips.
 
     Lists all available FDA Toolkit functions, automatically updated
-    from the dynamic registry.
+    from the dynamic registry. Hover over function names to see descriptions.
 
     Args:
         category (str): Filter by category. Default: None (all functions)
+        module (str): Filter by module. Default: None (all modules)
 
     Returns:
-        pd.DataFrame: Function reference table
+        pd.io.formats.style.Styler: Styled DataFrame with tooltip docstrings
 
     Example:
         >>> functions = info()
-        >>> functions.shape
-        (50, 4)
         >>> finance_funcs = info(category='Finance')
+        >>> parsing_funcs = info(module='finance.parsing')
+        >>> both = info(category='Finance', module='finance.parsing')
     """
     rows = []
+    docstrings = {}
+    
     for name, meta in FUNCTION_REGISTRY.items():
+        doc = meta.get("doc", "")
+        # Extract first non-empty line from docstring
+        first_line = ""
+        if doc:
+            for line in doc.split("\n"):
+                stripped = line.strip()
+                if stripped:
+                    first_line = stripped
+                    break
+        
+        func_name = f"{name}()"
         rows.append(
             {
-                "function": f"{name}()",
+                "function": func_name,
                 "category": meta.get("category", "Uncategorized"),
                 "module": meta.get("module", "unknown"),
-                "docstring": (meta.get("doc") or "").split("\n")[0][:60],
             }
         )
+        docstrings[func_name] = first_line
 
     df = (
         pd.DataFrame(rows)
@@ -322,6 +336,20 @@ def info(category: Optional[str] = None) -> pd.DataFrame:
 
     if category:
         df = df[df["category"].str.lower() == category.lower()].reset_index(drop=True)
+    
+    if module:
+        df = df[df["module"].str.lower() == module.lower()].reset_index(drop=True)
 
     audit_log("info", before=None, after=df)
-    return df
+    
+    # Apply tooltips using pandas Styler
+    def make_tooltip(val):
+        tooltip = docstrings.get(val, "")
+        return f'data-toggle="tooltip" title="{tooltip}"' if tooltip else ""
+    
+    styled = df.style.set_properties(**{'text-align': 'left'})
+    
+    # Add HTML attributes for tooltips (Jupyter/notebook compatible)
+    styled = styled.set_uuid("fda-toolkit-info")
+    
+    return styled
