@@ -4,6 +4,10 @@
 
 ![FDA Toolkit Banner](https://raw.githubusercontent.com/TeslimAdeyanju/Financial-Data-Analysis-Toolkit-Workspace/main/assets/fda-toolkit-banner.png)
 
+<div style="text-align: center; margin: 20px 0;">
+  <em>Clean. Validate. Analyze. Financial data made simple.</em>
+</div>
+
 [![PyPI version](https://img.shields.io/badge/PyPI-0.2.7-blue)](https://pypi.org/project/fda-toolkit/)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
